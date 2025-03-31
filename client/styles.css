@@ -1,0 +1,231 @@
+:root {
+    --white-color: #5c8ca7;
+    --black-color: #a86d74;
+    --light-bg: #f9dede;
+    --dark-bg: #1e1e1e;
+    --light-board: #f0d9b5;
+    --dark-board: #b58863;
+    --nude-pink: #f2a6c6;
+    --nude-blue: #a6c6f2;
+  }
+  
+  body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--light-bg);
+    margin: 0;
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  body.dark-mode {
+    background-color: var(--dark-bg);
+    color: #eee;
+  }
+  
+  h1 {
+    color: #bb5588;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  #scoreboard {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background: pink;
+    animation: pulse 3s infinite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+  
+  #chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 1rem 0;
+    transition: transform 0.3s ease;
+  }
+  
+  body.rotate-board #chessboard {
+    transform: rotate(180deg);
+  }
+  
+  .square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .light {
+    background-color: var(--light-board);
+  }
+  
+  .dark {
+    background-color: var(--dark-board);
+  }
+  
+  .square.selected {
+    background-color: #ffc0cb; /* blush pink */
+    box-shadow: 0 0 10px #ff69b4;
+    outline: 2px solid #ff69b4;
+  }
+  
+  
+  #controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  #controls button {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0.5rem 0;
+  }
+  
+  #controls button:first-child {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  #resignBtn {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  #gameStatus {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #444;
+  }
+  
+  #turnInfo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .turn-white {
+    background-color: var(--nude-pink);
+    color: #fff;
+  }
+  
+  .turn-black {
+    background-color: var(--nude-blue);
+    color: #fff;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #bb5588;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  #chat {
+    margin-top: 2rem;
+    width: 400px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #chatLog {
+    height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: #fefefe;
+    font-size: 0.9rem;
+  }
+  
+  #chatInput {
+    width: 70%;
+    padding: 0.5rem;
+  }
+  
+  #chat button {
+    padding: 0.5rem;
+    background: #bb5588;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+  
+  #chatLog .white-msg {
+    color: var(--nude-pink);
+    font-weight: bold;
+  }
+  
+  #chatLog .black-msg {
+    color: var(--nude-blue);
+    font-weight: bold;
+  }
+  

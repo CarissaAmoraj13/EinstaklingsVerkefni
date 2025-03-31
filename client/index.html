@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fjölspilunar Skákleikur</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Fjölspilunar Skákleikur</h1>
+
+  <!-- Theme Toggle -->
+  <button id="themeToggle">🌙 Toggle Mode</button>
+
+  <!-- Timer -->
+  <p id="timer">⏱️ Time left: <span id="timeLeft">30</span>s</p>
+
+  <!-- Scoreboard -->
+  <p id="scoreboard">Score - White: 0 | Black: 0 | Round: 1</p>
+
+  <!-- Game Controls -->
+  <div id="controls">
+    <button onclick="restartGame()">🔁 Restart Game</button>
+    <button id="resignBtn" onclick="resignGame()">🏳️ Resign</button>
+  </div>
+
+  <p id="gameStatus"></p>
+  <p id="playerRole"></p>
+  <div id="turnInfo" class="pulse-box">It's White's turn</div>
+
+  <!-- Chessboard -->
+  <div id="chessboard"></div>
+
+  <!-- Chat -->
+  <div id="chat">
+    <div id="chatLog"></div>
+    <input id="chatInput" type="text" placeholder="Say something..." />
+    <button onclick="sendChat()">Send</button>
+  </div>
+
+  <!-- Login Overlay -->
+  <div id="login" class="overlay">
+    <div class="login-box">
+      <p>Enter your name:</p>
+      <input type="text" id="nameInput" placeholder="ChessGambit" />
+      <button id="joinGameBtn">Join Game</button>
+    </div>
+  </div>
+
+  <!-- Waiting Message -->
+  <p id="waitingMessage" style="display:none;">Waiting for another player to join...</p>
+
+  <!-- Sounds -->
+  <audio id="sound-chat" src="sounds/chat.mp3"></audio>
+  <audio id="sound-wrong" src="sounds/wrong.mp3"></audio>
+  <audio id="sound-time" src="sounds/time.mp3"></audio>
+  <audio id="sound-win" src="sounds/win.mp3"></audio>
+  <audio id="sound-lose" src="sounds/lose.mp3"></audio>
+  <audio id="sound-start" src="sounds/start.mp3"></audio>
+  <audio id="bg-music" src="sounds/bg.mp3" loop autoplay></audio>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
